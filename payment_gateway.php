@@ -91,7 +91,7 @@ Class WP_Gateway_Kamba extends WC_Payment_Gateway{
 				$url = $response->redirect_url_success;
 				WC()->session->set( 'payment_request_id',  $response->id);	
 				phpAlert($url);
-				die(0);
+				
 				return array(
                     'result'    => 'success', 
                     'redirect'  => $url

@@ -57,7 +57,8 @@ Class KambaCheckout
 	
 		
 
-		setCheckout($response->qr_code->string);
+		$resp = json_decode($response);
+		setCheckout($resp->qr_code->string);
 		
 		$err = curl_error($curl);
 
