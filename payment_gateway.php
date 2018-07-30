@@ -69,8 +69,6 @@ Class WP_Gateway_Kamba extends WC_Payment_Gateway{
 		
 		}
 
-	
-        
 		try {
 			
 			$request = new KambaCheckout($this->merchant_id, $this->api_key, $this->testmode);
@@ -78,11 +76,9 @@ Class WP_Gateway_Kamba extends WC_Payment_Gateway{
             $request_data['channel']                = "WEBSITE";
             $request_data['currency'] 		        = "AOA";
 			$request_data['initial_amount'] 	    = $this->get_order_total();
-			$request_data['notes'] 		            = "Oooo oo";
-			$request_data['redirect_url_success'] 	= "http://localhost:8888/kamba_test/checkout/paywithkamba/";
+			$request_data['notes'] 		            = $product_names;
+			$request_data['redirect_url_success'] 	= site_url() ."/checkout/paywithkamba/";
             $request_data['payment_method']         = "WALLET";
-            
-			#$this->debug("Data sent for creating order ".print_r($request_data, true));
 			$response = $request->createCheckout(json_encode($request_data));
             
 			if(isset($response))
